@@ -7,6 +7,8 @@ export class GithubController {
 
   @Get('/commits')
   async getCommits() {
-    return this.githubService.getCommits();
+    const commits = await this.githubService.getCommits();
+
+    return { commits };
   }
 }

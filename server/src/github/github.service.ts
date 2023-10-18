@@ -1,13 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+
 import { OctokitService } from 'src/octokit/octokit.service';
 
 @Injectable()
 export class GithubService {
-  constructor(
-    private config: ConfigService,
-    private octokit: OctokitService,
-  ) {}
+  constructor(private octokit: OctokitService) {}
 
   async getCommits() {
     const res = await this.octokit.request(
