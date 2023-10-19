@@ -23,7 +23,7 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#161B22",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
@@ -53,6 +53,7 @@ export default {
         gray: "#0D1117",
         "light-gray": "#161B22",
         white: "#C9D1D9",
+        "gray-200": "#21262D",
       },
       borderRadius: {
         lg: "var(--radius)",

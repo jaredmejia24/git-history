@@ -1,50 +1,56 @@
-import "./App.css";
-
 import { Separator } from "@/components/ui/separator";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
 import axios from "axios";
+import CommitItem from "./components/commits/commitItem";
+
+import { Commit } from "./components/commits/commit.types";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 function App() {
-  const [commits, setCommits] = useState([]);
+  const [commits, setCommits] = useState<Commit[]>([]);
 
   useEffect(() => {
     async function getCommits() {
       const res = await axios.get(`${API_URL}/github/commits`);
+      type response = {
+        commits: Commit[];
+      };
 
-      setCommits(res.data.commits);
+      const data = res.data as response;
+
+      setCommits(data.commits);
     }
 
     getCommits();
   }, []);
 
   console.log(commits);
+
   return (
     <main className="bg-gray h-[100svh] w-full text-white">
-      <div className="w-7/12 mx-auto pt-12">
+      <section className="w-7/12 mx-auto pt-12">
         <h1 className="text-2xl">Commits</h1>
         <Separator className="my-4 bg-light-gray" />
 
-        <Popover>
-          <PopoverTrigger>
-            <Button className="bg-light-gray border border-light-gray hover:bg-light-gray active:opacity-80 hover:border-white ">
-              main
-            </Button>
-          </PopoverTrigger>
+        <Button className="flex items-center gap-3">
+          <i className="fa-solid fa-code-branch text-white"></i>
+          <span>main</span>
+        </Button>
 
-          <PopoverContent className="p-0 mt-1 shadow-lg bg-light-gray border border-light-gray">
-            <h5 className="py-2 pl-4 text-white">Switch branches/tags</h5>
-          </PopoverContent>
-        </Popover>
-      </div>
+        <div className="grid gap-4">
+          {commits.map((commit, i) => (
+            <CommitItem
+              key={commit.sha}
+              commit={commit}
+              previousCommit={i !== 0 ? commits[i - 1] : undefined}
+            />
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
