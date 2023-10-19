@@ -26,7 +26,7 @@ Steps for running the project:
         # API URL
         VITE_API_URL='http://localhost:4000/api/v1'
 
-3.  Install both client and server dependencies
+4.  Install both client and server dependencies
 
         cd server
         pnpm i
@@ -34,12 +34,12 @@ Steps for running the project:
         cd client
         pnpm i
 
-4.  Run both fronted and client servers
+5.  Run both fronted and client servers
 
         cd server
         pnpm run start:dev
 
-        # and in other terminal
+        # and in another terminal
         cd client
         pnpm run dev
 
