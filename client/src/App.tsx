@@ -31,7 +31,7 @@ function App() {
   console.log(commits);
 
   return (
-    <main className="bg-gray h-[100svh] w-full text-white">
+    <main className="bg-gray pb-12 min-h-[100svh] w-full text-white">
       <section className="w-7/12 mx-auto pt-12">
         <h1 className="text-2xl">Commits</h1>
         <Separator className="my-4 bg-light-gray" />
