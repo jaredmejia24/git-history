@@ -34,7 +34,7 @@ Steps for running the project:
         cd client
         pnpm i
 
-5.  Run both fronted and client servers
+5.  Run both front-end and back-end servers
 
         cd server
         pnpm run start:dev
